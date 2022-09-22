@@ -248,10 +248,57 @@ if(orientation == 'H'):#HORIZONTAL
     userMatrix[numberPlace][letterPlace] = 'x'
     userMatrix[numberPlace][letterPlace+1] = 'x'
     userMatrix[numberPlace][letterPlace+2] = 'x'
+
 print("\n")
 
 
+#CPU
+randOrientation = random.randint(0,1)#0 -> Vertical, 1 -> Horizontal
 
+if(randOrientation == 0):#Vertical
+    letterPlace = random.randint(letterLeftBorder,letterRightBorder)
+    numberPlace = random.randint(numberUpBorder,numberDownBorder-2)
+    print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
 
+    while(cpuMatrix[numberPlace][letterPlace] == 'x'
+    or cpuMatrix[numberPlace+1][letterPlace] == 'x'
+    or cpuMatrix[numberPlace+2][letterPlace] == 'x'):
+        print(("cpu placed WRONG"))
+
+        letterPlace = random.randint(letterLeftBorder,letterRightBorder)
+        numberPlace = random.randint(numberUpBorder,numberDownBorder-2)
+        print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
+
+    cpuMatrix[numberPlace][letterPlace] = 'x'
+    cpuMatrix[numberPlace+1][letterPlace] = 'x'
+    cpuMatrix[numberPlace+2][letterPlace] = 'x'
+
+if(randOrientation == 1):#Horizontal
+    letterPlace = random.randint(letterLeftBorder,letterRightBorder-2)
+    numberPlace = random.randint(numberUpBorder,numberDownBorder)
+    print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
+
+    while(cpuMatrix[numberPlace][letterPlace] == 'x'
+    or cpuMatrix[numberPlace][letterPlace+1] == 'x'
+    or cpuMatrix[numberPlace][letterPlace+2] == 'x'):
+        print(("cpu placed WRONG"))
+
+        letterPlace = random.randint(letterLeftBorder,letterRightBorder-2)
+        numberPlace = random.randint(numberUpBorder,numberDownBorder)
+        print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
+
+    cpuMatrix[numberPlace][letterPlace] = 'x'
+    cpuMatrix[numberPlace][letterPlace+1] = 'x'
+    cpuMatrix[numberPlace][letterPlace+2] = 'x'   
+
+print("\n")
+print("-- User Matrix --")
+for s in userMatrix:
+    print(*s)
+
+print("\n")
+print("-- Cpu Matrix (VISIBLE ONLY IN DEBUG) --")
+for s in cpuMatrix:
+    print(*s)
 
 
