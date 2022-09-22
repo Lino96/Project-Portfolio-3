@@ -37,3 +37,90 @@ while( w > 13 or w < 1 or h > 13 or h< 1):
     letterRightBorder = w-1
     numberUpBorder = 1
     numberDownBorder = h-1
+
+
+#FILLING MATRIX
+userMatrix = [["0" for x in range(w)] for y in range(h)]
+userHitMatrix = [["0" for x in range(w)] for y in range(h)]
+userDamagedMatrix = [["0" for x in range(w)] for y in range(h)]
+cpuMatrix = [["0" for x in range(w)] for y in range(h)]
+cpuHitMatrix = [["0" for x in range(w)] for y in range(h)]
+cpuDamagedMatrix = [["0" for x in range(w)] for y in range(h)]
+
+
+k=0
+for i in range(w):
+    userMatrix[i][0]=k
+    k+=1
+kk=0
+for j in range(h):
+    userMatrix[0][j]=chr(kk+64)
+    kk+1
+k=0
+for i in range(w):
+    userHitMatrix[i][0]=k
+    k+=1
+kk=0
+for j in range(h):
+    userHitMatrix[0][j]=chr(kk+64)
+    kk+1
+k=0
+for i in range(w):
+    userDamagedMatrix[i][0]=k
+    k+=1
+kk=0
+for j in range(h):
+    userDamagedMatrix[0][j]=chr(kk+64)
+    kk+1
+k=0
+for i in range(w):
+    cpuMatrix[i][0]=k
+    k+=1
+kk=0
+for j in range(h):
+    cpuMatrix[0][j]=chr(kk+64)
+    kk+1
+k=0
+for i in range(w):
+    cpuHitMatrix[i][0]=k
+    k+=1
+kk=0
+for j in range(h):
+    cpuHitMatrix[0][j]=chr(kk+64)
+    kk+1
+k=0
+for i in range(w):
+    cpuDamagedMatrix[i][0]=k
+    k+=1
+kk=0
+for j in range(h):
+    cpuDamagedMatrix[0][j]=chr(kk+64)
+    kk+1            
+
+print("\n- Your Matrix is generated -")
+for s in userMatrix:
+    print(*s)
+
+print("\n-- STEP2: Placing Ships --\n")
+
+#2-BLOCK SHIP PLACEMENT###
+#PLAYER
+print("Current Ship: |x||x|")
+orientation = input("Press V (vertical, up->down) or H (horizontal, left->right) to orient the 2-block ship\n")
+
+while(orientation != 'V' and orientation != 'H'):
+    orientation = input("Press V (vertical, up->down) or H (horizontal, left->right) to orient the 2-block ship\n")
+
+    if(orientation == 'V'):#VERTICAL
+        print("Current Ship:")
+        print("|x|")
+        print("|x|")
+
+        letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
+        numberPlace = int(input("\nInsert target number:\n"))
+
+        while(letterPlace > letterRightBorder or letterPlace < letterLeftBorder or numberPlace > numberDownBorder -1 or numberPlace < numberUpBorder or userMatrix[numberPlace][letterPlace] == 'x' or userMatrix[numberPlace+1][letterPlace] == 'x'):
+            print("Ship can't be placed out of border or over other ships, please replace it...\n")
+            letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
+            numberPlace = int(input("\nInsert target number:\n"))
+
