@@ -302,3 +302,69 @@ for s in cpuMatrix:
     print(*s)
 
 
+userPlaying = True;
+turn = 0
+#GAME LOOP
+while(gamestate !=0):
+
+    turn = turn + 1
+    print("\n- - - -TURN "+str(turn)+" - - - -\n")
+
+    if(userPlaying):#USER'S TURN
+        print("\nChoose your target...\n")
+        w = dict[input("Enter letter: ")]
+        h = int(input("Enter number: "))
+        while(w > letterRightBorder or w < letterLeftBorder or
+        h > numberDownBorder or h < numberUpBorder):
+                print("\n-- You can't hit out of border. Choose your target --\n")
+                w = dict[input("Enter letter: ")]
+                h = int(input("Enter number: "))
+
+        if(cpuMatrix[h][w]=='x'):
+            print("\nship hit!")
+            userHitMatrix[h][w] = 'x'
+            cpuDamagedMatrix[h][w] = 'x'
+
+            if(cpuDamagedMatrix == cpuMatrix):
+                gamestate = 0
+                print("\nYou win!")
+            else:
+                print("\n-- Your HitMatrix --")
+                for s in userHitMatrix:
+                    print(*s)
+        else:
+            print("\nnothing...")
+            userHitMatrix[h][w] = '1'
+            print("\n-- Your HitMatrix --")
+            for s in userHitMatrix:
+                print(*s)
+            userPlaying = False
+
+    else:#CPU'S TURN
+        print("\nCPU playing...\n")
+        w = random.randint(letterLeftBorder,letterRightBorder)
+        h = random.randint(numberUpBorder,numberDownBorder)
+        while(cpuHitMatrix[h][w] == 'x' or
+        cpuHitMatrix[h][w] == '1'):
+            w = random.randint(letterLeftBorder,letterRightBorder)
+            h = random.randint(numberUpBorder,numberDownBorder) 
+
+        if(userMatrix[h][w]=='x'):
+            print("\nCPU hit your ship!")
+            cpuHitMatrix[h][w] = 'x'
+            userDamagedMatrix[h][w] = 'x'
+
+            if(userDamagedMatrix == userMatrix):
+                gamestate = 0
+                print("\nCPU win!")
+                print("\n-- CPU HitMatrix --")
+                for s in cpuHitMatrix:
+                    print(*s)
+        else:
+            print("\ncpu Missed...")
+            cpuHitMatrix[h][w] = '1'
+            print("\n-- CPU HitMatrix --")
+            for s in cpuHitMatrix:
+                print(*s)
+            userPlaying = True
+                                
