@@ -1,5 +1,5 @@
 
-#include <stdio.h>
+include <stdio.h>
 import random
 import string
 
@@ -23,7 +23,7 @@ dict = {
 
 print("\n-- STEP1: Creating Board --\n")
 w = int(input("Enter board width (max 12): "))+1
-w = int(input("Enter board height (max 12): "))+1
+h = int(input("Enter board height (max 12): "))+1
 letterLeftBorder = 1
 letterRightBorder = w-1
 numberUpBorder = 1
@@ -32,7 +32,7 @@ numberDownBorder = h-1
 while( w > 13 or w < 1 or h > 13 or h< 1):
     print("\nMax Height and Width are 12, please retry...")
     w = int(input("Enter board width (max 12): "))+1
-    w = int(input("Enter board height (max 12): "))+1
+    h = int(input("Enter board height (max 12): "))+1
     letterLeftBorder = 1
     letterRightBorder = w-1
     numberUpBorder = 1
@@ -56,6 +56,7 @@ kk=0
 for j in range(h):
     userMatrix[0][j]=chr(kk+64)
     kk+1
+
 k=0
 for i in range(w):
     userHitMatrix[i][0]=k
@@ -64,6 +65,7 @@ kk=0
 for j in range(h):
     userHitMatrix[0][j]=chr(kk+64)
     kk+1
+
 k=0
 for i in range(w):
     userDamagedMatrix[i][0]=k
@@ -72,6 +74,7 @@ kk=0
 for j in range(h):
     userDamagedMatrix[0][j]=chr(kk+64)
     kk+1
+
 k=0
 for i in range(w):
     cpuMatrix[i][0]=k
@@ -80,6 +83,7 @@ kk=0
 for j in range(h):
     cpuMatrix[0][j]=chr(kk+64)
     kk+1
+
 k=0
 for i in range(w):
     cpuHitMatrix[i][0]=k
@@ -88,6 +92,7 @@ kk=0
 for j in range(h):
     cpuHitMatrix[0][j]=chr(kk+64)
     kk+1
+
 k=0
 for i in range(w):
     cpuDamagedMatrix[i][0]=k
@@ -111,16 +116,44 @@ orientation = input("Press V (vertical, up->down) or H (horizontal, left->right)
 while(orientation != 'V' and orientation != 'H'):
     orientation = input("Press V (vertical, up->down) or H (horizontal, left->right) to orient the 2-block ship\n")
 
-    if(orientation == 'V'):#VERTICAL
-        print("Current Ship:")
-        print("|x|")
-        print("|x|")
+if(orientation == 'V'):#VERTICAL
+    print("Current Ship:")
+    print("|x|")
+    print("|x|")
 
+    letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
+    numberPlace = int(input("\nInsert target number:\n"))
+
+    while(letterPlace > letterRightBorder or letterPlace < letterLeftBorder or
+    numberPlace > numberDownBorder -1 or numberPlace < numberUpBorder or
+    userMatrix[numberPlace][letterPlace] == 'x' or userMatrix[numberPlace+1][letterPlace] == 'x'):
+        print("Ship can't be placed out of border or over other ships, please replace it...\n")
         letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
         numberPlace = int(input("\nInsert target number:\n"))
 
-        while(letterPlace > letterRightBorder or letterPlace < letterLeftBorder or numberPlace > numberDownBorder -1 or numberPlace < numberUpBorder or userMatrix[numberPlace][letterPlace] == 'x' or userMatrix[numberPlace+1][letterPlace] == 'x'):
-            print("Ship can't be placed out of border or over other ships, please replace it...\n")
-            letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
-            numberPlace = int(input("\nInsert target number:\n"))
+    userMatrix[numberPlace][letterPlace] = 'x'
+    userMatrix[numberPlace+1][letterPlace] = 'x'
+
+if(orientation == 'H'):#HORIZONTAL
+    print("Current Ship:")
+    print("|x||x|")
+
+    letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
+    numberPlace = int(input("\nInsert target number:\n"))
+
+    while(letterPlace > letterRightBorder -1 or letterLeftBorder < letterLeftBorder or
+    numberPlace > numberDownBorder or numberPlace < numberUpBorder or
+    userMatrix[numberPlace][letterPlace] == 'x' or userMatrix[numberPlace][letterPlace+1] == 'x'):
+        print("Ship can't be placed out of border or over other ships, please replace it...\n")
+        letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
+        numberPlace = int(input("\nInsert target number:\n"))
+
+    userMatrix[numberPlace][letterPlace] = 'x'
+    userMatrix[numberPlace][letterPlace+1] = 'x'
+print("\n")
+
+
+
+
+
 
