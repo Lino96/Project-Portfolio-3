@@ -195,7 +195,60 @@ print("\n")
 print("-- Cpu Matrix (VISIBLE ONLY IN DEBUG) --")
 for s in cpuMatrix:
     print(*s)
-    
+
+
+
+
+#3-BLOCK SHIP PLACEMENT
+#PLAYER
+print("Current Ship: |x||x||x|")
+orientation = input("Press V (vertical, up->down) or H (horizontal, left->right) to orient the 3-block ship\n")
+
+while(orientation != 'V' and orientation != 'H'):
+    orientation = input("Press V (vertical, up->down) or H (horizontal, left->right) to orient the 3-block ship\n")
+
+if(orientation == 'V'):#VERTICAL
+    print("Current Ship:")
+    print("|x|")
+    print("|x|")
+    print("|x|")
+
+    letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
+    numberPlace = int(input("\nInsert target number:\n"))
+
+    while(letterPlace > letterRightBorder or letterPlace < letterLeftBorder or
+    numberPlace > numberDownBorder -2 or numberPlace < numberUpBorder or
+    userMatrix[numberPlace][letterPlace] == 'x' 
+    or userMatrix[numberPlace+1][letterPlace] == 'x'
+    or userMatrix[numberPlace+2][letterPlace] == 'x'):
+        print("Ship can't be placed out of border or over other ships, please replace it...\n")
+        letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
+        numberPlace = int(input("\nInsert target number:\n"))
+
+    userMatrix[numberPlace][letterPlace] = 'x'
+    userMatrix[numberPlace+1][letterPlace] = 'x'
+    userMatrix[numberPlace+2][letterPlace] = 'x'
+
+if(orientation == 'H'):#HORIZONTAL
+    print("Current Ship:")
+    print("|x||x||x|")
+
+    letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
+    numberPlace = int(input("\nInsert target number:\n"))
+
+    while(letterPlace > letterRightBorder -2 or letterPlace < letterLeftBorder or
+    numberPlace > numberDownBorder or numberPlace < numberUpBorder or
+    userMatrix[numberPlace][letterPlace] == 'x'
+    or userMatrix[numberPlace][letterPlace+1] == 'x'
+    or userMatrix[numberPlace][letterPlace+2] == 'x'):
+        print("Ship can't be placed out of border or over other ships, please replace it...\n")
+        letterPlace = dict[input("\nInsert target letter CAPITAL:\n")]
+        numberPlace = int(input("\nInsert target number:\n"))
+
+    userMatrix[numberPlace][letterPlace] = 'x'
+    userMatrix[numberPlace][letterPlace+1] = 'x'
+    userMatrix[numberPlace][letterPlace+2] = 'x'
+print("\n")
 
 
 
