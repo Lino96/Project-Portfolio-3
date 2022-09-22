@@ -153,6 +153,51 @@ if(orientation == 'H'):#HORIZONTAL
 print("\n")
 
 
+#CPU
+randOrientation = random.randint(0,1)#0 -> Vertical, 1 -> Horizontal
+
+if(randOrientation == 0):#Vertical
+    letterPlace = random.randint(letterLeftBorder,letterRightBorder)
+    numberPlace = random.randint(numberUpBorder,numberDownBorder-1)
+    print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
+
+    while(cpuMatrix[numberPlace][letterPlace] == 'x' or cpuMatrix[numberPlace+1][letterPlace] == 'x'):
+        print(("cpu placed WRONG"))
+
+        letterPlace = random.randint(letterLeftBorder,letterRightBorder)
+        numberPlace = random.randint(numberUpBorder,numberDownBorder-1)
+        print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
+
+    cpuMatrix[numberPlace][letterPlace] = 'x'
+    cpuMatrix[numberPlace+1][letterPlace] = 'x'
+
+if(randOrientation == 1):#Horizontal
+    letterPlace = random.randint(letterLeftBorder,letterRightBorder-1)
+    numberPlace = random.randint(numberUpBorder,numberDownBorder-1)
+    print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
+
+    while(cpuMatrix[numberPlace][letterPlace] == 'x' or cpuMatrix[numberPlace][letterPlace+1] == 'x'):
+        print(("cpu placed WRONG"))
+
+        letterPlace = random.randint(letterLeftBorder,letterRightBorder-1)
+        numberPlace = random.randint(numberUpBorder,numberDownBorder)
+        print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
+
+    cpuMatrix[numberPlace][letterPlace] = 'x'
+    cpuMatrix[numberPlace][letterPlace+1] = 'x'   
+
+print("\n")
+print("-- User Matrix --")
+for s in userMatrix:
+    print(*s)
+
+print("\n")
+print("-- Cpu Matrix (VISIBLE ONLY IN DEBUG) --")
+for s in cpuMatrix:
+    print(*s)
+    
+
+
 
 
 
