@@ -1,5 +1,5 @@
 
-include <stdio. h>
+include <stdio.h>
 import random
 import string
 
