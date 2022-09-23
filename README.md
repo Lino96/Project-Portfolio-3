@@ -4,6 +4,8 @@
 
 The application allows the user to play a simple version of naval battles. The scope of the game is to destroy all opponent's ship.
 
+A live version of the game can be found [here](https://battlehip.herokuapp.com/)
+
 # table of content:
 
 - [How to play](#howtoplay)
