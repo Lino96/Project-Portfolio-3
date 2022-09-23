@@ -1,6 +1,6 @@
-#BATTLESHIP
+# BATTLESHIP
 
-#Code Institute Portfolio Project 3
+# Code Institute Portfolio Project 3
 
 The application allows the user to play a simple version of naval battles. The scope of the game is to destroy all opponent's ship.
 
