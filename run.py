@@ -1,5 +1,5 @@
 
-include <stdio.h>
+include <stdio. h>
 import random
 import string
 
@@ -39,7 +39,7 @@ while( w > 13 or w < 1 or h > 13 or h< 1):
     numberDownBorder = h-1
 
 
-#FILLING MATRIX
+
 userMatrix = [["0" for x in range(w)] for y in range(h)]
 userHitMatrix = [["0" for x in range(w)] for y in range(h)]
 userDamagedMatrix = [["0" for x in range(w)] for y in range(h)]
@@ -108,8 +108,7 @@ for s in userMatrix:
 
 print("\n-- STEP2: Placing Ships --\n")
 
-#2-BLOCK SHIP PLACEMENT###
-#PLAYER
+
 print("Current Ship: |x||x|")
 orientation = input("Press V (vertical, up->down) or H (horizontal, left->right) to orient the 2-block ship\n")
 
@@ -153,10 +152,10 @@ if(orientation == 'H'):#HORIZONTAL
 print("\n")
 
 
-#CPU
-randOrientation = random.randint(0,1)#0 -> Vertical, 1 -> Horizontal
 
-if(randOrientation == 0):#Vertical
+randOrientation = random.randint(0,1)
+
+if(randOrientation == 0):
     letterPlace = random.randint(letterLeftBorder,letterRightBorder)
     numberPlace = random.randint(numberUpBorder,numberDownBorder-1)
     print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
@@ -171,7 +170,7 @@ if(randOrientation == 0):#Vertical
     cpuMatrix[numberPlace][letterPlace] = 'x'
     cpuMatrix[numberPlace+1][letterPlace] = 'x'
 
-if(randOrientation == 1):#Horizontal
+if(randOrientation == 1):
     letterPlace = random.randint(letterLeftBorder,letterRightBorder-1)
     numberPlace = random.randint(numberUpBorder,numberDownBorder-1)
     print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
@@ -199,15 +198,14 @@ for s in cpuMatrix:
 
 
 
-#3-BLOCK SHIP PLACEMENT
-#PLAYER
+
 print("Current Ship: |x||x||x|")
 orientation = input("Press V (vertical, up->down) or H (horizontal, left->right) to orient the 3-block ship\n")
 
 while(orientation != 'V' and orientation != 'H'):
     orientation = input("Press V (vertical, up->down) or H (horizontal, left->right) to orient the 3-block ship\n")
 
-if(orientation == 'V'):#VERTICAL
+if(orientation == 'V'):
     print("Current Ship:")
     print("|x|")
     print("|x|")
@@ -229,7 +227,7 @@ if(orientation == 'V'):#VERTICAL
     userMatrix[numberPlace+1][letterPlace] = 'x'
     userMatrix[numberPlace+2][letterPlace] = 'x'
 
-if(orientation == 'H'):#HORIZONTAL
+if(orientation == 'H'):
     print("Current Ship:")
     print("|x||x||x|")
 
@@ -252,10 +250,10 @@ if(orientation == 'H'):#HORIZONTAL
 print("\n")
 
 
-#CPU
-randOrientation = random.randint(0,1)#0 -> Vertical, 1 -> Horizontal
 
-if(randOrientation == 0):#Vertical
+randOrientation = random.randint(0,1)
+
+if(randOrientation == 0):
     letterPlace = random.randint(letterLeftBorder,letterRightBorder)
     numberPlace = random.randint(numberUpBorder,numberDownBorder-2)
     print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
@@ -273,7 +271,7 @@ if(randOrientation == 0):#Vertical
     cpuMatrix[numberPlace+1][letterPlace] = 'x'
     cpuMatrix[numberPlace+2][letterPlace] = 'x'
 
-if(randOrientation == 1):#Horizontal
+if(randOrientation == 1):
     letterPlace = random.randint(letterLeftBorder,letterRightBorder-2)
     numberPlace = random.randint(numberUpBorder,numberDownBorder)
     print("cpu placed in "+ str(chr(letterPlace+64)) + "," + str(numberPlace))
@@ -304,13 +302,13 @@ for s in cpuMatrix:
 
 userPlaying = True;
 turn = 0
-#GAME LOOP
+
 while(gamestate !=0):
 
     turn = turn + 1
     print("\n- - - -TURN "+str(turn)+" - - - -\n")
 
-    if(userPlaying):#USER'S TURN
+    if(userPlaying):
         print("\nChoose your target...\n")
         w = dict[input("Enter letter: ")]
         h = int(input("Enter number: "))
@@ -340,7 +338,7 @@ while(gamestate !=0):
                 print(*s)
             userPlaying = False
 
-    else:#CPU'S TURN
+    else:
         print("\nCPU playing...\n")
         w = random.randint(letterLeftBorder,letterRightBorder)
         h = random.randint(numberUpBorder,numberDownBorder)
@@ -367,4 +365,3 @@ while(gamestate !=0):
             for s in cpuHitMatrix:
                 print(*s)
             userPlaying = True
-                                
