@@ -1,31 +1,21 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+#BATTLESHIP
 
-Welcome Lino96,
+#Code Institute Portfolio Project 3
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The application allows the user to play a simple version of naval battles. The scope of the game is to destroy all opponent's ship.
 
-## Reminders
+# table of content:
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+- [How to play](#howtoplay)
+    - [Scope](#scope)
+    - [Set Ships](#ships)
+    - [Orienting Ships](#maintaining)
+- [Deployment](#deployment)
 
-## Creating the Heroku app
+# How to play:
+<a name="howtoplay"></a> 
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Scope
+<a name="scope"></a> 
 
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+In this game you will need to destroy all opponent's battleships. Theese ships are gonna be generated randomly 
