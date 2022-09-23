@@ -6,7 +6,7 @@ The application allows the user to play a simple version of naval battles. The s
 
 A live version of the game can be found [here](https://battlehip.herokuapp.com/)
 
-# table of content:
+# Table of content:
 
 - [How to play](#howtoplay)
     - [Scope](#scope)
